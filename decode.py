@@ -27,7 +27,19 @@ Longer patterns should work::
 def decode(s):
     """Decode a string."""
 
-    
+    result = ''
+    i = 0
+    num_to_skip = 0
+
+    while i < len(s)-1:
+        if s[i].isdigit():
+            num_to_skip = int(s[i])
+            i+= 1 
+            result = f'{result}{s[i+num_to_skip]}'  
+        else:
+            i+= 1
+
+    return result
 
 if __name__ == '__main__':
     import doctest
